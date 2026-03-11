@@ -111,8 +111,8 @@ aksademy/
 
 ```bash
 # Clone repository
-git clone https://github.com/username/aksademy.git
-cd aksademy
+git clone https://github.com/ferdiodwi/mini-project-aksademy
+cd mini-project-aksademy
 
 # Install dependencies
 npm install
