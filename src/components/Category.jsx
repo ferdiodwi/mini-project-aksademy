@@ -1,63 +1,86 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const categories = [
   {
     title: 'Web App Development',
     desc: 'Mulai dari Front-end hingga Back-end menggunakan teknologi modern.',
-    icon: '/web-app-icon.webp',
-    bgClass: 'bg-gradient-to-br from-[#3B82F6] to-[#2563EB]',
-    delay: ''
+    icon: '/web-app-icon.webp'
   },
   {
     title: 'Graphic Design',
     desc: 'Kembangkan kreativitas visualmu dengan tools desain profesional.',
-    icon: '/graphic-design-icon.webp',
-    bgClass: 'bg-gradient-to-br from-[#EC4899] to-[#BE185D]',
-    delay: 'delay-100' // Using tailwind utilities for delay if we build intersect observer, but for now simple setup
+    icon: '/graphic-design-icon.webp'
   },
   {
     title: 'Data Science',
     desc: 'Analisis data dan Machine Learning untuk keputusan bisnis.',
-    icon: '/data-science-icon.webp',
-    bgClass: 'bg-gradient-to-br from-[#8B5CF6] to-[#6D28D9]',
-    delay: 'delay-200'
+    icon: '/data-science-icon.webp'
   },
   {
     title: 'Accounting & Tax',
     desc: 'Pelajari pembukuan, laporan keuangan, dan perpajakan dasar.',
-    icon: '/accounting-tax-icon.webp',
-    bgClass: 'bg-gradient-to-br from-[#10B981] to-[#059669]',
-    delay: 'delay-300'
+    icon: '/accounting-tax-icon.webp'
   }
 ];
 
 export default function Category() {
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
   return (
-    <section id="kategori" className="section bg-white px-6">
+    <section id="kategori" className="section bg-[#F8FAFC] px-6">
       <div className="max-w-[1280px] mx-auto">
-        <div className="max-w-[600px] mx-auto text-center mb-16">
+        <motion.div 
+          className="max-w-[600px] mx-auto text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-3xl md:text-4xl mb-4">Pilih Kategori Belajar</h2>
-          <p>Kuasai skill yang paling dicari perusahaan saat ini.</p>
-        </div>
+          <p className="text-gray-600">Kuasai skill yang paling dicari perusahaan saat ini.</p>
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {categories.map((cat, i) => (
-            <div 
+            <motion.div 
               key={i} 
-              className={`bg-white p-8 md:p-10 rounded-[24px] shadow-md border-t-0 border border-black/5 relative overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl group`}
+              variants={cardVariants}
+              className="bg-white rounded-[16px] shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-2 group flex flex-col"
             >
-              <div 
-                className="absolute top-0 left-0 w-full h-1 bg-primary scale-x-0 origin-left transition-transform duration-400 group-hover:scale-x-100"
-              ></div>
-              
-              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${cat.bgClass}`}>
-                <img src={cat.icon} alt={cat.title} className="w-8 h-8 brightness-0 invert" />
+              {/* Image Section */}
+              <div className="w-full overflow-hidden bg-[#0A1A3A]">
+                 <img 
+                    src={cat.icon} 
+                    alt={cat.title} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                 />
               </div>
-              <h3 className="text-xl mb-3">{cat.title}</h3>
-              <p className="text-base text-text-muted">{cat.desc}</p>
-            </div>
+              
+              {/* Text Section */}
+              <div className="p-6 text-center flex-grow flex flex-col justify-start">
+                <h3 className="text-lg font-bold mb-2 text-gray-900">{cat.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{cat.desc}</p>
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

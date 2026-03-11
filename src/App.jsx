@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Category from './components/Category';
 import Program from './components/Program';
+import Testimonial from './components/Testimonial';
 import Footer from './components/Footer';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Hero />
       <Category />
       <Program />
+      <Testimonial />
       <Footer />
     </>
   );
