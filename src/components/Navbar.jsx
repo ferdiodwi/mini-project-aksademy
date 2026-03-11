@@ -197,7 +197,7 @@ export default function Navbar() {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         onFocus={() => setIsSearchFocused(true)}
-                        placeholder="Cari Produk..."
+                        placeholder="Cari..."
                         className="w-full bg-transparent border-none outline-none text-[14px] text-gray-700 placeholder:text-gray-400 font-medium"
                       />
                       {searchQuery.length > 0 ? (
@@ -271,7 +271,7 @@ export default function Navbar() {
                     Source Code
                   </a>
 
-                  <button className="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-[#031435] text-[15px] font-bold text-white hover:bg-[#062054] shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden group">
+                  <button className="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-[#031435] text-[15px] font-bold text-white hover:bg-[#062054] shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden group">
                     <span className="relative z-10">Daftar</span>
                     <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </button>
@@ -299,7 +299,7 @@ export default function Navbar() {
                         type="text"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Cari Produk..."
+                        placeholder="Cari..."
                         className="block w-full rounded-xl border-0 py-3 pl-11 pr-10 text-gray-900 ring-1 ring-inset ring-gray-200 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#14427D] text-[15px] shadow-sm bg-gray-50 font-medium"
                       />
                       {searchQuery && (
