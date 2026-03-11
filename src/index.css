@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #4F46E5;
+  --color-primary-hover: #4338CA;
+  --color-primary-light: #EEF2FF;
+  --color-secondary: #10B981;
+  --color-secondary-hover: #059669;
+
+  --color-bg-main: #FAFAFB;
+  --color-bg-light: #FFFFFF;
+
+  --color-text-main: #111827;
+  --color-text-muted: #6B7280;
+  
+  --font-sans: 'Outfit', sans-serif;
+  
+  --animate-drift: drift 20s infinite alternate ease-in-out;
+  --animate-drift-reverse: drift 15s infinite alternate-reverse ease-in-out;
+  --animate-scroll: scroll 20s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-slide-up: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans bg-bg-main text-text-main overflow-x-hidden;
+  }
+  h1, h2, h3, h4 {
+    @apply text-text-main font-bold leading-tight tracking-tight;
+  }
+  p {
+    @apply text-text-muted text-lg;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold rounded-full cursor-pointer transition-all duration-300 border-2 border-transparent gap-2;
+  }
+  .btn:active {
+    @apply scale-[0.98];
+  }
+  .btn-primary {
+    @apply bg-primary text-white shadow-[0_4px_14px_0_rgba(79,70,229,0.39)];
+  }
+  .btn-primary:hover {
+    @apply bg-primary-hover shadow-[0_6px_20px_rgba(79,70,229,0.23)] -translate-y-0.5;
+  }
+  .btn-secondary {
+    @apply bg-white text-text-main border-gray-200 shadow-sm;
+  }
+  .btn-secondary:hover {
+    @apply border-secondary text-secondary;
+  }
+  .btn-outline {
+    @apply bg-transparent text-text-main border-gray-200;
+  }
+  .btn-outline:hover {
+    @apply border-primary text-primary;
+  }
+  .btn-outline-primary {
+    @apply bg-transparent text-primary border-primary;
+  }
+  .btn-outline-primary:hover {
+    @apply bg-primary text-white;
+  }
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+
+  /* Structural Classes */
+  .section {
+    @apply py-24;
+  }
+  
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border-b border-white/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+  }
+}
+
+@layer utilities {
+  .animate-paused {
+    animation-play-state: paused;
+  }
+  .clip-text-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-r;
+  }
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(50px, 50px) scale(1.1); }
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes slideUp {
+  to { opacity: 1; transform: translateY(0); }
+}
