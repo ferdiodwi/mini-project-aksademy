@@ -170,7 +170,7 @@ npm run preview
 
 ## 📄 Lisensi
 
-Hak Cipta © 2025 **Aksademy**. Hak Cipta Dilindungi.
+Hak Cipta © 2026 **Aksademy**. Hak Cipta Dilindungi.
 
 ---
 
